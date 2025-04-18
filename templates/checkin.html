@@ -18,6 +18,7 @@
       <th>Client Name</th>
       <th>Room Number</th>
       <th>Check-In Date</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +28,11 @@
       <td>{{ reservation.client.name }}</td>
       <td>{{ reservation.room_number }}</td>
       <td>{{ reservation.check_in_date.date() }}</td>
+      <td>
+        <form action="{{ url_for('delete_reservation', reservation_id=reservation.id) }}" method="POST" onsubmit="return confirm('Delete this check-in record?');">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
     </tr>
     {% endfor %}
   </tbody>

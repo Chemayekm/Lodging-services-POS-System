@@ -3,17 +3,22 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    /* Set the background image */
+    background: url("../images/Background3.jpeg") no-repeat center center fixed;
+    background-size: cover;
   }
   
   /* Header and Navigation */
   header {
-    background: #333;
-    color: #fff;
+    background: #333333;
+    color: #ffffff;
     padding: 10px;
+    background-color: rgba(219, 211, 218, 0.9); /* Semi-transparent to blend with background */
   }
   
   header h1 {
-    margin: 0;
+    margin: 20px;
+    color: aqua; 
   }
   
   nav ul {
@@ -51,7 +56,7 @@ body {
   }
   
   nav ul li .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #b6c6dc;
   }
   
   nav ul li:hover .dropdown-content {
@@ -70,8 +75,18 @@ body {
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ddd;
-    background: #f9f9f9;
+    background: #22e3e6;
     text-align: center;
+  }
+  
+  .logo img {
+    height: 75px;
+    margin-right: 40px;
+  }
+
+  .logo h1 {
+   font-size: 24px;
+   margin: 0;
   }
   
   /* Flash Message Styles */
@@ -125,5 +140,26 @@ table {
   }
   
   th {
-    background-color: #f2f2f2;
+    background-color: #4fbdce;
   }
+
+  header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  header .logo img {
+    height: 50px;
+    margin-right: 15px;
+  }
+
+  /* Footer */
+footer {
+  background-color: #343a40;
+  color: #1e00ff;
+  text-align: center;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

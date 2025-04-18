@@ -18,6 +18,7 @@
       <br>
       <input type="submit" value="Sign Up">
     </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
@@ -25,7 +26,7 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
-    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+    
   </div>
 </body>
 </html>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Report Summary</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Client Name</th>
+      <th>Rooms Checked Out</th>
+      <th>Total Nights</th>
+      <th>Total Amount</th>
+      <th>Amount Paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in report %}
+      <tr>
+        <td>{{ row.client_name }}</td>
+        <td>{{ row.rooms }}</td>
+        <td>{{ row.total_nights }}</td>
+        <td>${{ row.total_amount }}</td>
+        <td>${{ row.amount_paid }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

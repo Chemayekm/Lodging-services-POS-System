@@ -8,9 +8,11 @@
 </head>
 <body class="login-page">
   <div class="login-container">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Dashboard Logo">
+      <h2>Welcome to JF Kingdom Nest Hotel</h2>
     <h2>Login</h2>
     <!-- Login Icon/Image -->
-    <img src="{{ url_for('static', filename='images/login-image.jpg') }}" alt="Login Image" class="login-image">
     <form method="POST" action="/login">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" required>
