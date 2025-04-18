@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Registrations</h2>
+
+<!-- Client Registration Form -->
+<form method="POST" action="/registrations">
+  <label for="name">Client Name:</label>
+  <input type="text" id="name" name="name" required>
+  <br>
+
+  <label for="contact">Contact Information:</label>
+  <input type="text" id="contact" name="contact" required>
+  <br>
+
+  <label for="phone">Phone Number:</label>
+  <input type="text" id="phone" name="phone" required>
+  <br>
+
+  <label for="email">Email Address:</label>
+  <input type="email" id="email" name="email" required>
+  <br>
+
+  <input type="submit" value="Register Client">
+</form>
+
+<h3>Registered Clients:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Client ID</th>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Phone</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for client in clients %}
+    <tr>
+      <td>{{ client.id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.contact }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.email }}</td>
+      <td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

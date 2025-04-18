@@ -1,0 +1,77 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lodging POS System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>JF Kingdom Nest Lodging POS System</h1>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#">Registrations</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('registrations') }}">New Client</a>
+            <a href="{{ url_for('registrations') }}">View Registered Clients</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Reservations</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('reservations') }}">New Reservation</a>
+            <a href="{{ url_for('reservations') }}">View Reservations</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Check-In</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('checkin') }}">New Check-In</a>
+            <a href="{{ url_for('checkin') }}">Pending Check-Ins</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Check-Out</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('checkout') }}">New Check-Out</a>
+            <a href="{{ url_for('checkout') }}">Active Check-Ins</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Clients</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('clients') }}">View Clients</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Payments</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('payments') }}">New Payment</a>
+            <a href="{{ url_for('payments') }}">View Payments</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Gallery</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('gallery') }}">Service Photos</a>
+          </div>
+        </li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

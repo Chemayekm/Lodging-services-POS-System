@@ -1,0 +1,13 @@
+<!-- templates/gallery.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Service Photo Gallery</h2>
+<div class="gallery">
+  {% for image in images %}
+    <div class="image-container">
+      <img src="{{ url_for('static', filename='images/login_image.jpg') }}" alt="Service Image {{ loop.index }}">
+      <p>Service {{ loop.index }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

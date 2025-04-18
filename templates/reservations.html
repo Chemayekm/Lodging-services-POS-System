@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Reservations</h2>
+
+<!-- Form for creating a new reservation -->
+<form method="POST" action="/reservations">
+  <label for="client_id">Select Client:</label>
+  <select id="client_id" name="client_id" required>
+    <option value="">-- Choose a Client --</option>
+    {% for client in clients %}
+      <option value="{{ client.id }}">{{ client.name }} - {{ client.contact }}</option>
+    {% endfor %}
+  </select>
+  <small>
+    <a href="{{ url_for('registrations') }}">Not registered? Register a new client here.</a>
+  </small>
+  <br><br>
+  <label for="client_name">Client Name:</label>
+  <input type="text" id="client_name" name="client_name" required>
+  <br>
+  <label for="room_number">Room Number:</label>
+  <input type="text" id="room_number" name="room_number" required>
+  <br>
+  <label for="check_in">Check-In Date (YYYY-MM-DD):</label>
+  <input type="text" id="check_in" name="check_in" required>
+  <br>
+  <label for="check_out">Check-Out Date (YYYY-MM-DD):</label>
+  <input type="text" id="check_out" name="check_out" required>
+  <br>
+  <input type="submit" value="Create Reservation">
+</form>
+
+<hr>
+<h3>Current Reservations:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Reservation ID</th>
+      <th>Client Name</th>
+      <th>Room Number</th>
+      <th>Check-In Date</th>
+      <th>Check-Out Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for reservation in reservations %}
+    <tr>
+      <td>{{ reservation.id }}</td>
+      <td>{{ reservation.client.name }}</td>
+      <td>{{ reservation.room_number }}</td>
+      <td>{{ reservation.check_in_date.date() }}</td>
+      <td>{{ reservation.check_out_date.date() }}</td>
+      <td>
+        {% if reservation.checked_in and not reservation.checked_out %}
+          Checked In
+        {% elif reservation.checked_out %}
+          Checked Out
+        {% else %}
+          Pending
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

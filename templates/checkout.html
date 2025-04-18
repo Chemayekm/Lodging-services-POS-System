@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Active Check-Ins (For Checkout)</h2>
+
+<!-- Form for processing a check-out -->
+<form method="POST">
+  <label for="reservation_id">Reservation ID:</label>
+  <input type="text" id="reservation_id" name="reservation_id" required>
+  <input type="submit" value="Check Out">
+</form>
+
+<h3>Active Check-In Records:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Reservation ID</th>
+      <th>Client Name</th>
+      <th>Room Number</th>
+      <th>Check-In Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for reservation in reservations %}
+    <tr>
+      <td>{{ reservation.id }}</td>
+      <td>{{ reservation.client.name }}</td>
+      <td>{{ reservation.room_number }}</td>
+      <td>{{ reservation.check_in_date.date() }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
